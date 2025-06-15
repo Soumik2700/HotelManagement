@@ -1,10 +1,20 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { hotels } from "../../utils/mockData";
+import { hotels as hotelsData } from "../../utils/mockData";
+
+const defaultNewHotel = {
+    name: "",
+    location: "",
+    description: "",
+    image: "",
+};
 
 const Hotels = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [sortBy, setSortBy] = useState("name");
+    const [hotels, setHotels] = useState(hotelsData);
+    const [showAddModal, setShowAddModal] = useState(false);
+    const [newHotel, setNewHotel] = useState(defaultNewHotel);
 
     // Filter hotels based on search term
     const filteredHotels = hotels.filter(hotel =>
@@ -23,6 +33,23 @@ const Hotels = () => {
                 return 0;
         }
     });
+
+    // Handle add hotel
+    const handleAddHotel = (e) => {
+        e.preventDefault();
+        if (!newHotel.name || !newHotel.location || !newHotel.description || !newHotel.image) return;
+        setHotels([
+            ...hotels,
+            {
+                ...newHotel,
+                id: (hotels.length + 1).toString(),
+            }
+        ]);
+        setShowAddModal(false);
+        setNewHotel(defaultNewHotel);
+    };
+
+    console.log(newHotel)
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
@@ -50,6 +77,80 @@ const Hotels = () => {
             </div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                {/* Add Hotel Button */}
+                <div className="flex justify-end mb-6">
+                    <button
+                        onClick={() => setShowAddModal(true)}
+                        className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold shadow hover:from-blue-700 hover:to-purple-700 transition-all"
+                    >
+                        + Add Hotel
+                    </button>
+                </div>
+
+                {/* Add Hotel Modal */}
+                {showAddModal && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+                        <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-lg relative">
+                            <button
+                                className="absolute top-4 right-4 text-gray-400 hover:text-red-500 text-2xl"
+                                onClick={() => setShowAddModal(false)}
+                                aria-label="Close"
+                            >
+                                &times;
+                            </button>
+                            <h2 className="text-2xl font-bold mb-6 text-gray-800">Add New Hotel</h2>
+                            <form onSubmit={handleAddHotel} className="space-y-4">
+                                <input
+                                    type="text"
+                                    placeholder="Hotel Name"
+                                    className="w-full border border-gray-300 rounded-lg px-4 py-3"
+                                    value={newHotel.name}
+                                    onChange={e => setNewHotel({ ...newHotel, name: e.target.value })}
+                                    required
+                                />
+                                <input
+                                    type="text"
+                                    placeholder="Location"
+                                    className="w-full border border-gray-300 rounded-lg px-4 py-3"
+                                    value={newHotel.location}
+                                    onChange={e => setNewHotel({ ...newHotel, location: e.target.value })}
+                                    required
+                                />
+                                <textarea
+                                    placeholder="Description"
+                                    className="w-full border border-gray-300 rounded-lg px-4 py-3"
+                                    value={newHotel.description}
+                                    onChange={e => setNewHotel({ ...newHotel, description: e.target.value })}
+                                    required
+                                />
+                                <input
+                                    type="url"
+                                    placeholder="Image URL"
+                                    className="w-full border border-gray-300 rounded-lg px-4 py-3"
+                                    value={newHotel.image}
+                                    onChange={e => setNewHotel({ ...newHotel, image: e.target.value })}
+                                    required
+                                />
+                                <div className="flex justify-end gap-4 mt-4">
+                                    <button
+                                        type="button"
+                                        className="px-5 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100"
+                                        onClick={() => setShowAddModal(false)}
+                                    >
+                                        Cancel
+                                    </button>
+                                    <button
+                                        type="submit"
+                                        className="px-6 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold hover:from-blue-700 hover:to-purple-700"
+                                    >
+                                        Add Hotel
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                )}
+
                 {/* Search and Filter Section */}
                 <div className="bg-white rounded-2xl shadow-xl p-8 mb-12 border border-gray-100">
                     <div className="flex flex-col lg:flex-row gap-6 items-center">

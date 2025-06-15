@@ -130,7 +130,7 @@ const GuestLayout = ({ children }) => {
                                     <span className="text-xl">🏨</span>
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-bold">LuxuryStay</h3>
+                                    <h3 className="text-xl font-bold">StayNext</h3>
                                     <p className="text-sm text-gray-400">Premium Hotels</p>
                                 </div>
                             </div>
