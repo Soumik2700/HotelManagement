@@ -1,10 +1,10 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import GuestRoutes from "./routes/GuestRoutes";
 import AdminRoutes from "./routes/AdminRoutes";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         {/* Public Routes for Guests */}
         <Route path="/*" element={<GuestRoutes />} />
@@ -12,7 +12,7 @@ function App() {
         {/* Protected Admin Routes */}
         <Route path="/admin/*" element={<AdminRoutes />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
