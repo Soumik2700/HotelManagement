@@ -52,9 +52,9 @@ const Hotels = () => {
     console.log(newHotel)
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100">
             {/* Hero Section */}
-            <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 text-white py-16">
+            <div className="bg-gradient-to-r from-blue-900 via-purple-900 to-blue-800 text-white py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-4xl md:text-6xl font-bold mb-4">
                         Discover Amazing Hotels
@@ -89,8 +89,8 @@ const Hotels = () => {
 
                 {/* Add Hotel Modal */}
                 {showAddModal && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
-                        <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-lg relative">
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">
+                        <div className="bg-gray-900 rounded-2xl shadow-2xl p-8 w-full max-w-lg relative text-gray-100">
                             <button
                                 className="absolute top-4 right-4 text-gray-400 hover:text-red-500 text-2xl"
                                 onClick={() => setShowAddModal(false)}
@@ -98,12 +98,12 @@ const Hotels = () => {
                             >
                                 &times;
                             </button>
-                            <h2 className="text-2xl font-bold mb-6 text-gray-800">Add New Hotel</h2>
+                            <h2 className="text-2xl font-bold mb-6 text-gray-100">Add New Hotel</h2>
                             <form onSubmit={handleAddHotel} className="space-y-4">
                                 <input
                                     type="text"
                                     placeholder="Hotel Name"
-                                    className="w-full border border-gray-300 rounded-lg px-4 py-3"
+                                    className="w-full border border-gray-700 bg-gray-800 text-gray-100 rounded-lg px-4 py-3"
                                     value={newHotel.name}
                                     onChange={e => setNewHotel({ ...newHotel, name: e.target.value })}
                                     required
@@ -111,14 +111,14 @@ const Hotels = () => {
                                 <input
                                     type="text"
                                     placeholder="Location"
-                                    className="w-full border border-gray-300 rounded-lg px-4 py-3"
+                                    className="w-full border border-gray-700 bg-gray-800 text-gray-100 rounded-lg px-4 py-3"
                                     value={newHotel.location}
                                     onChange={e => setNewHotel({ ...newHotel, location: e.target.value })}
                                     required
                                 />
                                 <textarea
                                     placeholder="Description"
-                                    className="w-full border border-gray-300 rounded-lg px-4 py-3"
+                                    className="w-full border border-gray-700 bg-gray-800 text-gray-100 rounded-lg px-4 py-3"
                                     value={newHotel.description}
                                     onChange={e => setNewHotel({ ...newHotel, description: e.target.value })}
                                     required
@@ -126,7 +126,7 @@ const Hotels = () => {
                                 <input
                                     type="url"
                                     placeholder="Image URL"
-                                    className="w-full border border-gray-300 rounded-lg px-4 py-3"
+                                    className="w-full border border-gray-700 bg-gray-800 text-gray-100 rounded-lg px-4 py-3"
                                     value={newHotel.image}
                                     onChange={e => setNewHotel({ ...newHotel, image: e.target.value })}
                                     required
@@ -134,7 +134,7 @@ const Hotels = () => {
                                 <div className="flex justify-end gap-4 mt-4">
                                     <button
                                         type="button"
-                                        className="px-5 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100"
+                                        className="px-5 py-2 rounded-lg border border-gray-700 text-gray-100 hover:bg-gray-800"
                                         onClick={() => setShowAddModal(false)}
                                     >
                                         Cancel
@@ -152,7 +152,7 @@ const Hotels = () => {
                 )}
 
                 {/* Search and Filter Section */}
-                <div className="bg-white rounded-2xl shadow-xl p-8 mb-12 border border-gray-100">
+                <div className="bg-gray-900 rounded-2xl shadow-xl p-8 mb-12 border border-gray-800">
                     <div className="flex flex-col lg:flex-row gap-6 items-center">
                         {/* Search Bar */}
                         <div className="flex-1 relative">
@@ -166,7 +166,7 @@ const Hotels = () => {
                                 placeholder="Search hotels by name or location..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full pl-12 pr-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg transition-all"
+                                className="w-full pl-12 pr-4 py-4 border border-gray-700 bg-gray-800 text-gray-100 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg transition-all"
                             />
                         </div>
 
@@ -176,7 +176,7 @@ const Hotels = () => {
                             <select
                                 value={sortBy}
                                 onChange={(e) => setSortBy(e.target.value)}
-                                className="px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white min-w-[150px]"
+                                className="px-4 py-3 border border-gray-700 bg-gray-800 text-gray-100 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent min-w-[150px]"
                             >
                                 <option value="name">Hotel Name</option>
                                 <option value="location">Location</option>
@@ -185,12 +185,12 @@ const Hotels = () => {
                     </div>
 
                     {/* Search Results Info */}
-                    <div className="mt-6 pt-6 border-t border-gray-100">
+                    <div className="mt-6 pt-6 border-t border-gray-800">
                         <div className="flex items-center justify-between">
-                            <p className="text-gray-600">
-                                <span className="font-semibold text-gray-800">{sortedHotels.length}</span> hotel{sortedHotels.length !== 1 ? 's' : ''} found
+                            <p className="text-gray-400">
+                                <span className="font-semibold text-gray-100">{sortedHotels.length}</span> hotel{sortedHotels.length !== 1 ? 's' : ''} found
                                 {searchTerm && (
-                                    <span> for "<span className="font-semibold text-blue-600">{searchTerm}</span>"</span>
+                                    <span> for "<span className="font-semibold text-blue-400">{searchTerm}</span>"</span>
                                 )}
                             </p>
                             {searchTerm && (
@@ -226,7 +226,7 @@ const Hotels = () => {
                 ) : (
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {sortedHotels.map((hotel) => (
-                            <div key={hotel.id} className="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100">
+                            <div key={hotel.id} className="group bg-gray-900 rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-800">
                                 <div className="relative overflow-hidden">
                                     <img
                                         src={hotel.image}
@@ -253,16 +253,16 @@ const Hotels = () => {
 
                                 <div className="p-6">
                                     <div className="mb-4">
-                                        <h2 className="text-2xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">
+                                        <h2 className="text-2xl font-bold text-gray-100 mb-2 group-hover:text-blue-400 transition-colors">
                                             {hotel.name}
                                         </h2>
-                                        <div className="flex items-center text-gray-600 mb-3">
+                                        <div className="flex items-center text-gray-400 mb-3">
                                             <svg className="w-4 h-4 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                                                 <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                                             </svg>
                                             <span className="font-medium">{hotel.location}</span>
                                         </div>
-                                        <p className="text-gray-600 leading-relaxed">{hotel.description}</p>
+                                        <p className="text-gray-300 leading-relaxed">{hotel.description}</p>
                                     </div>
 
                                     {/* Rating Stars */}
@@ -287,9 +287,9 @@ const Hotels = () => {
                                     </div>
 
                                     {/* Price and Book Button */}
-                                    <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                                    <div className="flex items-center justify-between pt-4 border-t border-gray-800">
                                         <div>
-                                            <p className="text-2xl font-bold text-gray-800">₹4,999</p>
+                                            <p className="text-2xl font-bold text-gray-100">₹4,999</p>
                                             <p className="text-sm text-gray-500">per night</p>
                                         </div>
                                         <Link
