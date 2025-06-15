@@ -8,17 +8,17 @@ const Hotels = () => {
 
     // Filter hotels based on search term
     const filteredHotels = hotels.filter(hotel =>
-        hotel.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        hotel.location.toLowerCase().includes(searchTerm.toLowerCase())
+        hotel?.name?.toLowerCase()?.includes(searchTerm?.toLowerCase()) ||
+        hotel?.location?.toLowerCase()?.includes(searchTerm?.toLowerCase())
     );
 
     // Sort hotels
     const sortedHotels = [...filteredHotels].sort((a, b) => {
         switch (sortBy) {
             case "name":
-                return a.name.localeCompare(b.name);
+                return a?.name?.localeCompare(b?.name);
             case "location":
-                return a.location.localeCompare(b.location);
+                return a?.location?.localeCompare(b?.location);
             default:
                 return 0;
         }

@@ -29,7 +29,7 @@ const GuestLayout = ({ children }) => {
                             </div>
                             <div>
                                 <h1 className="text-2xl font-bold bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
-                                    LuxuryStay
+                                    StayNext
                                 </h1>
                                 <p className="text-xs text-blue-100 -mt-1">Premium Hotels</p>
                             </div>
